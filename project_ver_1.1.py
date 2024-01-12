@@ -1,52 +1,168 @@
-
+# 버전 기록--------------------------------------------
+# 1.0 한 파일 안에서 모두 제작
+# 1.1 각 csv 파일에서 플레이리스트 유지하며 읽고 쓰기
 # ---------------------------------------------------------------------------------------------
 
 # 모듈 설정 ---------------------------------------------------------------------------------------------
 import random
 import time
 import csv
+from pandas import DataFrame, read_csv
 
-# ---------------------------------------------------------------------------------------------
-# read.csv(플레이리스트)--------------------------------------------------------------------------
-with open('prePlly.csv', mode='r', encoding='utf8') as pP:
-    melCode, songKor, artistKor = pP.readline().split(',')
+# 실패작
+# # ---------------------------------------------------------------------------------------------
+# # read.csv(플레이리스트)--------------------------------------------------------------------------
+# with open('prePlly.csv', mode='r', encoding='utf8') as pP:
+#     melCode, songKor, artistKor = pP.readline().split(',')
+#
+#     pPL = {}
+#     code = 'gg'
+#     code1 = []
+#     # print(melCode)
+#     while True:
+#         code1 = pP.readline().split(',')
+#         if code1[0] == "":              #
+#             break
+#         pPL[code1[0]]= {'songKor': code1[1], 'artistKor': code1[2]}
+#         if code1[0] == "":              #11번줄에서 탈출구문 작성법 물어보기
+#             break
+# print(pPL)
+# # pPL = list(pPL.values())
+# ApPLV = []
+# ApPLV2 = []
+# for i in pPL:
+#     pPLV = [v for v in pPL.values()]
+#     # ApPLV.append(pPLV)
+#     print(f' pPLV => {pPLV}')
+#
+#     for v in pPLV:
+#         for i in (v.values()):
+#             print(f'ApPLV2 => {i}')
+#         # print
+#         # print(ApPLV2.values())
+#         # for l in ApPLV2:
+#         #     BpPLV2 = {ApPLV2[0] : ApPLV2[1]}
+#         #
+#         #     print(f'BpPLV2 => {BpPLV2}')
+# # for i in ApPLV2:
+#
+#
+# # PPT 꼭 다 따라해보기
+#
 
-    pPL = {}
-    code = 'gg'
-    code1 = []
-    # print(melCode)
-    while True:
-        code1 = pP.readline().split(',')
-        if code1[0] == "":              #
-            break
-        pPL[code1[0]]= {'songKor': code1[1], 'artistKor': code1[2]}
-        if code1[0] == "":              #11번줄에서 탈출구문 작성법 물어보기
-            break
-print(pPL)
-# pPL = list(pPL.values())
-ApPLV = []
-ApPLV2 = []
-for i in pPL:
-    pPLV = [v for v in pPL.values()]
-    # ApPLV.append(pPLV)
-    print(f' pPLV => {pPLV}')
 
-    for v in pPLV:
-        for i in (v.values()):
-            print(f'ApPLV2 => {i}')
-        # print
-        # print(ApPLV2.values())
-        # for l in ApPLV2:
-        #     BpPLV2 = {ApPLV2[0] : ApPLV2[1]}
-        #
-        #     print(f'BpPLV2 => {BpPLV2}')
-# for i in ApPLV2:
+prePllyFile = 'prePlly.csv'
+kpopPllyFile = 'kpopPlly.csv'
+ostPllyFile = 'ostPlly.csv'
+balPllyFile = 'balPlly.csv'
+dancePllyFile = 'dancePlly.csv'
+indiePllyFile = 'indiePlly.csv'
+inkiChartFile = 'inkiChart.csv'
+findPlly1File = 'FindPlly1.csv'
+
+prePllyCsv = read_csv(prePllyFile)
+kpopPllyCsv = read_csv(kpopPllyFile)
+ostPllyCsv = read_csv(ostPllyFile)
+balPllyCsv = read_csv(balPllyFile)
+dancePllyCsv = read_csv(dancePllyFile)
+indiePllyCsv = read_csv(indiePllyFile)
+inkiChartCsv = read_csv(inkiChartFile)
+findPlly1Csv = read_csv(findPlly1File)
 
 
-# PPT 꼭 다 따라해보기
+# print(prePllyCsv)
+
+pPllySong, pPllyArtist = prePllyCsv['노래한글'], prePllyCsv['가수한글']
+kPllySong, kPllyArtist = kpopPllyCsv['노래한글'], kpopPllyCsv['가수한글']
+oPllySong, oPllyArtist = ostPllyCsv['노래한글'], ostPllyCsv['가수한글']
+bPllySong, bPllyArtist = balPllyCsv['노래한글'], balPllyCsv['가수한글']
+dPllySong, dPllyArtist = dancePllyCsv['노래한글'], dancePllyCsv['가수한글']
+iPllySong, iPllyArtist = indiePllyCsv['노래한글'], indiePllyCsv['가수한글']
+CPllySong, CPllyArtist = inkiChartCsv['노래한글'], inkiChartCsv['가수한글']
+fPllySong, fPllyArtist = findPlly1Csv['노래한글'], findPlly1Csv['가수한글']
 
 
-print(prePlly)
+
+
+# print(pPllySong)
+# print(pPllyArtist)
+
+prePlly =[]
+kpopPlly = []
+ostPlly = []
+balPlly = []
+dancePlly = []
+indiePlly = []
+findPlly = []
+inkiChart = []
+
+PllySong = ['pPllySong', 'kPllySong', 'oPllySong', 'bPllySong', 'dPllySong', 'iPllySong', 'CPllySong', 'fPllySong']
+PllyArtist = ['pPllyArtist', 'kPllyArtist', 'oPllyArtist', 'bPllyArtist', 'dPllyArtist', 'iPllyArtist', 'CPllyArtist', 'fPllyArtist']
+Plly = [prePlly, kpopPlly, ostPlly, balPlly, dancePlly, indiePlly, findPlly, inkiChart]
+
+for i, j in enumerate(pPllySong):
+    PllyDict = {}
+    PllyDict[j] = pPllyArtist[i]
+    prePlly.append(PllyDict)
+
+for i, j in enumerate(kPllySong):
+    PllyDict = {}
+    PllyDict[j] = kPllyArtist[i]
+    kpopPlly.append(PllyDict)
+
+for i, j in enumerate(oPllySong):
+    PllyDict = {}
+    PllyDict[j] = oPllyArtist[i]
+    ostPlly.append(PllyDict)
+
+for i, j in enumerate(bPllySong):
+    PllyDict = {}
+    PllyDict[j] = bPllyArtist[i]
+    balPlly.append(PllyDict)
+
+for i, j in enumerate(dPllySong):
+    PllyDict = {}
+    PllyDict[j] = dPllyArtist[i]
+    dancePlly.append(PllyDict)
+
+for i, j in enumerate(iPllySong):
+    PllyDict = {}
+    PllyDict[j] = iPllyArtist[i]
+    indiePlly.append(PllyDict)
+
+for i, j in enumerate(CPllySong):
+    PllyDict = {}
+    PllyDict[j] = CPllyArtist[i]
+    inkiChart.append(PllyDict)
+
+for i, j in enumerate(fPllySong):
+    PllyDict = {}
+    PllyDict[j] = fPllyArtist[i]
+    findPlly.append(PllyDict)
+
+# def creatPlly(a, b, c):
+#     for i, j in enumerate(a):
+#         PllyDict = {}
+#         PllyDict[j] = b[i]
+#         c.append(PllyDict)
+
+
+# for i, j in enumerate(pPllySong):
+#     PllyDict = {}
+#     PllyDict[j]=pPllyArtist[i]
+#     prePlly.append(PllyDict)
+
+creatPlly(pPllySong,pPllyArtist,prePlly)
+
+
+# for i in range(8):
+    # print(PllySong[i],PllyArtist[i],Plly[])
+
+# print(prePlly)
+
+
+#
+# print(prePlly)
 # prePlly = pPL.values()[0]
 # print(pPL)
 # print(prePlly)
