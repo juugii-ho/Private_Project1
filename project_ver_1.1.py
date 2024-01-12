@@ -1,6 +1,7 @@
 # 버전 기록--------------------------------------------
 # 1.0 한 파일 안에서 모두 제작
 # 1.1 각 csv 파일에서 플레이리스트 유지하며 읽고 쓰기
+# 1.2 함수 외 zip()으로 돌리는 법 고민하기
 # ---------------------------------------------------------------------------------------------
 
 # 모듈 설정 ---------------------------------------------------------------------------------------------
@@ -96,64 +97,66 @@ indiePlly = []
 findPlly = []
 inkiChart = []
 
-PllySong = ['pPllySong', 'kPllySong', 'oPllySong', 'bPllySong', 'dPllySong', 'iPllySong', 'CPllySong', 'fPllySong']
-PllyArtist = ['pPllyArtist', 'kPllyArtist', 'oPllyArtist', 'bPllyArtist', 'dPllyArtist', 'iPllyArtist', 'CPllyArtist', 'fPllyArtist']
+PllySong = [list(pPllySong), list(kPllySong), list(oPllySong), list(bPllySong), list(dPllySong), list(iPllySong), list(CPllySong), list(fPllySong)]
+PllyArtist = [list(pPllyArtist), list(kPllyArtist), list(oPllyArtist), list(bPllyArtist), list(dPllyArtist), list(iPllyArtist), list(CPllyArtist), list(fPllyArtist)]
 Plly = [prePlly, kpopPlly, ostPlly, balPlly, dancePlly, indiePlly, findPlly, inkiChart]
-
-for i, j in enumerate(pPllySong):
-    PllyDict = {}
-    PllyDict[j] = pPllyArtist[i]
-    prePlly.append(PllyDict)
-
-for i, j in enumerate(kPllySong):
-    PllyDict = {}
-    PllyDict[j] = kPllyArtist[i]
-    kpopPlly.append(PllyDict)
-
-for i, j in enumerate(oPllySong):
-    PllyDict = {}
-    PllyDict[j] = oPllyArtist[i]
-    ostPlly.append(PllyDict)
-
-for i, j in enumerate(bPllySong):
-    PllyDict = {}
-    PllyDict[j] = bPllyArtist[i]
-    balPlly.append(PllyDict)
-
-for i, j in enumerate(dPllySong):
-    PllyDict = {}
-    PllyDict[j] = dPllyArtist[i]
-    dancePlly.append(PllyDict)
-
-for i, j in enumerate(iPllySong):
-    PllyDict = {}
-    PllyDict[j] = iPllyArtist[i]
-    indiePlly.append(PllyDict)
-
-for i, j in enumerate(CPllySong):
-    PllyDict = {}
-    PllyDict[j] = CPllyArtist[i]
-    inkiChart.append(PllyDict)
-
-for i, j in enumerate(fPllySong):
-    PllyDict = {}
-    PllyDict[j] = fPllyArtist[i]
-    findPlly.append(PllyDict)
+#
+# for i, j in enumerate(pPllySong):
+#     PllyDict = {}
+#     PllyDict[j] = pPllyArtist[i]
+#     prePlly.append(PllyDict)
+#
+# for i, j in enumerate(kPllySong):
+#     PllyDict = {}
+#     PllyDict[j] = kPllyArtist[i]
+#     kpopPlly.append(PllyDict)
+#
+# for i, j in enumerate(oPllySong):
+#     PllyDict = {}
+#     PllyDict[j] = oPllyArtist[i]
+#     ostPlly.append(PllyDict)
+#
+# for i, j in enumerate(bPllySong):
+#     PllyDict = {}
+#     PllyDict[j] = bPllyArtist[i]
+#     balPlly.append(PllyDict)
+#
+# for i, j in enumerate(dPllySong):
+#     PllyDict = {}
+#     PllyDict[j] = dPllyArtist[i]
+#     dancePlly.append(PllyDict)
+#
+# for i, j in enumerate(iPllySong):
+#     PllyDict = {}
+#     PllyDict[j] = iPllyArtist[i]
+#     indiePlly.append(PllyDict)
+#
+# for i, j in enumerate(CPllySong):
+#     PllyDict = {}
+#     PllyDict[j] = CPllyArtist[i]
+#     inkiChart.append(PllyDict)
+#
+# for i, j in enumerate(fPllySong):
+#     PllyDict = {}
+#     PllyDict[j] = fPllyArtist[i]
+#     findPlly.append(PllyDict)
 
 def creatPlly(a, b, c):
+    # print(a, b, c)
     for i, j in enumerate(a):
-        PllyDict = {}
-        PllyDict[j] = b[i]
-        c.append(PllyDict)
-
+        for ii, k in enumerate(j):
+            PllyDict = {}
+            PllyDict[k] = b[i][ii]
+            c[i].append(PllyDict)
+            # print(c[i])
 
 # for i, j in enumerate(pPllySong):
 #     PllyDict = {}
 #     PllyDict[j]=pPllyArtist[i]
 #     prePlly.append(PllyDict)
 
-creatPlly(pPllySong,pPllyArtist,prePlly)
-
+creatPlly(PllySong,PllyArtist,Plly)
+# print(prePlly)
 
 # for i in range(8):
     # print(PllySong[i],PllyArtist[i],Plly[])
