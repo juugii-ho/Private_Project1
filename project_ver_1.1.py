@@ -140,11 +140,11 @@ for i, j in enumerate(fPllySong):
     PllyDict[j] = fPllyArtist[i]
     findPlly.append(PllyDict)
 
-# def creatPlly(a, b, c):
-#     for i, j in enumerate(a):
-#         PllyDict = {}
-#         PllyDict[j] = b[i]
-#         c.append(PllyDict)
+def creatPlly(a, b, c):
+    for i, j in enumerate(a):
+        PllyDict = {}
+        PllyDict[j] = b[i]
+        c.append(PllyDict)
 
 
 # for i, j in enumerate(pPllySong):
